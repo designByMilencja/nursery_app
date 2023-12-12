@@ -27,7 +27,7 @@ const ResetEmailForm = () => {
       });
       const response = await res.json();
       if (response.success) {
-        router.push("/confirm-password-change");
+        router.push("/confirm-email");
       } else {
         console.log("error", response?.message);
       }

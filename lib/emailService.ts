@@ -46,9 +46,22 @@ const sendEmail = async ({ emailAddress, emailType, userId }: Props) => {
     const mailOptions = {
       from: process.env.EMAIL_SERVER_FROM,
       to: emailAddress,
-      subject: "Potwierdzenie rejestracji",
-      text: `Aby potwierdzić rejestrację, kliknij ten link: ${tokenLink}`
-    };
+      subject: emailType === "emailValidation" ? "Potwierdzenie rejestracji" : "Reset hasła",
+      html: emailType === "emailValidation"
+    ? `
+      <h3>Witaj</h3>
+      <p>Aby potwierdzić rejestrację, kliknij ten link: <a href="${tokenLink}">rejestracja konta</a>.</p>
+      <p>Jeśli to nie Ty chcesz się zarejestrować na naszej stronie, zignoruj tę wiadomość..</p>
+      <p>Pozdrawiamy, zespół Nursery</p>
+    `
+    : `
+      <h3>Witaj</h3>
+      <p>Aby zresetować hasło, kliknij ten link: <a href="${tokenLink}">zmiana hasła</a>.</p>
+      <p>Jeśli to nie Ty chcesz zmienić hasło na naszej stronie, zignoruj tę wiadomość.</p>
+      <p>Pozdrawiamy, zespół Nursery</p>
+
+    `};
+      
     const emailSendInfo = await transporter.sendMail(mailOptions);
     return emailSendInfo;
   } catch (error) {

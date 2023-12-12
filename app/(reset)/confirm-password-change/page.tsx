@@ -1,8 +1,8 @@
-import ConfirmEmailToChangePassword from "@/components/forms/ConfirmEmailToChangePassword";
+import ConfirmationChangingPassword from "@/components/forms/ConfimationChangingPassword";
 
 const Page = () => {
   return (
-    <ConfirmEmailToChangePassword />);
+    <ConfirmationChangingPassword />);
 };
 
 export default Page;

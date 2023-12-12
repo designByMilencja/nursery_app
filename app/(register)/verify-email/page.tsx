@@ -1,9 +1,10 @@
+import ConfirmationRegistration from '@/components/forms/ConfirmationRegistration'
 import React from 'react'
 
-const EmailIsVerified = () => {
+const Page = () => {
   return (
-    <EmailIsVerified/>
+    <ConfirmationRegistration/>
   )
 }
 
-export default EmailIsVerified
+export default Page

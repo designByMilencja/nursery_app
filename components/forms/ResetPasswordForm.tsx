@@ -45,8 +45,11 @@ const ResetPasswordForm = () => {
       });
        
       const response = await res.json();
-      if(response.ok) {
-        router.push("/");
+  
+      if (response.status === 201) {
+        router.push("/confirm-password-change");
+      } else {
+        console.log("error", response?.message);
       }
       
     } catch (error: any) {
