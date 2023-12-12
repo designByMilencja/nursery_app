@@ -2,9 +2,13 @@ import { NextRequest, NextResponse } from "next/server";
 import bcrypt from 'bcrypt'
 import { User } from "@/models/User";
 
+
 export async function POST(req: NextRequest) {
   try {
     const { password, token } = await req.json();
+    console.log(password, token);
+    
+    
     if (!password || !token) {
       return NextResponse.json(
         { message: "Something is missing" },
@@ -31,7 +35,7 @@ export async function POST(req: NextRequest) {
     isUserExist.resetPasswordToken = undefined;
     isUserExist.resetPasswordTokenExpiry = undefined;
     await isUserExist.save()
-
+    
     return NextResponse.json(
       { message: "Success - password reset" },
       { status: 201 }

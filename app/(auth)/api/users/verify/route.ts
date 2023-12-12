@@ -24,6 +24,8 @@ export async function GET(req: NextRequest) {
       user.verifyToken = undefined;
       user.verifyTokenExpiry = undefined;
       await user.save();
+      const confirmationEmailChangeUrl = `${process.env.NEXTAUTH_URL}/verify-email`
+      return NextResponse.redirect(confirmationEmailChangeUrl);
     } else if (emailType === "resetPassword") {
       user = await User.findOne({
         resetPasswordToken: token,
@@ -31,14 +33,14 @@ export async function GET(req: NextRequest) {
           $gt: Date.now()
         }
       });
+      console.log(user);
+      
       if (!user) {
         return NextResponse.json(
           { message: "User not found" },
           { status: 500 }
         );
       }
-      user.resetPasswordToken = undefined;
-      user.resetPasswordTokenExpiry = undefined;
       await user.save();
       const resetPasswordUrl = `${process.env.NEXTAUTH_URL}/reset-password?token=${token}&verified=true`
       return NextResponse.redirect(resetPasswordUrl);

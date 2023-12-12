@@ -11,7 +11,7 @@ interface IResetPassword {
   token: string;
 }
 
-const ResetPassword = () => {
+const ResetPasswordForm = () => {
   const searchParams = useSearchParams();
   const token = searchParams.get("token");
   const verify = searchParams.get("verified");
@@ -43,8 +43,11 @@ const ResetPassword = () => {
         body: JSON.stringify(data),
         "content-type": "application/json"
       });
+       
       const response = await res.json();
-      console.log(response);
+      if(response.ok) {
+        router.push("/");
+      }
       
     } catch (error: any) {
       console.log("error", error?.message);
@@ -68,5 +71,5 @@ const ResetPassword = () => {
   );
 
 };
-export default ResetPassword;
+export default ResetPasswordForm;
 

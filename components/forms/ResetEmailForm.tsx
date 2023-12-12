@@ -5,7 +5,7 @@ import Input from "@/components/forms/Input";
 import Button from "@/components/forms/Button";
 import { useRouter } from "next/navigation";
 
-const ResetEmailConfirm = () => {
+const ResetEmailForm = () => {
   const router = useRouter();
   const {
     register, handleSubmit, formState: {
@@ -26,7 +26,6 @@ const ResetEmailConfirm = () => {
         "content-type": "application/json"
       });
       const response = await res.json();
-      console.log(response);
       if (response.success) {
         router.push("/confirm-password-change");
       } else {
@@ -54,5 +53,5 @@ const ResetEmailConfirm = () => {
   );
 
 };
-export default ResetEmailConfirm;
+export default ResetEmailForm;
 

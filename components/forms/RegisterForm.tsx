@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 
-const Register = () => {
+const RegisterForm = () => {
   const [selectedRole, setSelectedRole] = useState<string>("employee");
   const [errorMessage, setErrorMessage] = useState<string>("");
   const router = useRouter();
@@ -65,12 +65,7 @@ const Register = () => {
       }
     } catch (error:any) {
 
-    } finally {
-
     }
-
-
-
   };
   return (
     <form onSubmit={handleSubmit(handleSubmitForm)}
@@ -165,5 +160,5 @@ const Register = () => {
     </form>
   );
 };
-export default Register;
+export default RegisterForm;
 

@@ -8,7 +8,7 @@ import { signIn } from "next-auth/react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-const Login = () => {
+const LoginForm = () => {
     const router = useRouter();
     const [error, setError] = useState<string>("");
     const {
@@ -69,5 +69,5 @@ const Login = () => {
 
   }
 ;
-export default Login;
+export default LoginForm;
 
