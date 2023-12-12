@@ -2,7 +2,10 @@ import Image from "next/image";
 import React from "react";
 import Link from "next/link";
 
-const Thanks = ({text}) => {
+interface Props {
+    text: string;
+}
+const Thanks = ({text}:Props) => {
   return (
     <div className="flex-center mt-[200px] min-w-[320px] max-w-[550px] flex-col gap-5 text-center">
       <p>{text}</p>

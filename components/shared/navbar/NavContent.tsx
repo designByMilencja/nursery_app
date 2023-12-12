@@ -10,7 +10,8 @@ import Logout from "@/components/forms/Logout"
 const NavContent = () => {
   const pathname = usePathname()
   const { data: session } = useSession()
-  const links = !session ? sidebarLinks : session?.user?.role === "employer" ? sidebarLinksEmployer : sidebarLinksEmployeeAdmin
+  const {role} = session?.user
+  const links = !session ? sidebarLinks : role === "employer" ? sidebarLinksEmployer : sidebarLinksEmployeeAdmin
   return (
     <section className="flex h-full flex-col gap-6 pt-16">
       {links.map((item) => {

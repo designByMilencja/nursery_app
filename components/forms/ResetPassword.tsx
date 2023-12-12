@@ -44,6 +44,8 @@ const ResetPassword = () => {
         "content-type": "application/json"
       });
       const response = await res.json();
+      console.log(response);
+      
     } catch (error: any) {
       console.log("error", error?.message);
     }

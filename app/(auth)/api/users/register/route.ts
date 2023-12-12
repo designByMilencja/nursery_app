@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { User, UserSchema } from "@/models/User";
+import { User } from "@/models/User";
 import bcrypt from "bcrypt";
 import { UserRegister } from "@/types";
 import sendEmail from "@/lib/emailService";
@@ -15,7 +15,7 @@ export async function POST(req: NextRequest) {
       );
     }
     // spr czy nie ma duplikacji
-    const duplicate: UserSchema | null = await User.findOne({
+    const duplicate = await User.findOne({
       email: userData.email
     }).lean().exec();
     if (duplicate) {
@@ -40,7 +40,7 @@ export async function POST(req: NextRequest) {
       { message: "Success - user created" },
       { status: 201 }
     );
-  } catch (error: string) {
+  } catch (error: any) {
     console.log(error);
     return NextResponse.json(
       { message: "Error", error },

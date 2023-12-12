@@ -4,7 +4,7 @@ import sendEmail from "@/lib/emailService";
 
 export async function POST(req: NextRequest) {
   try {
-    const { email }: string = await req.json();
+    const { email } = await req.json();
     if (!email) {
       return NextResponse.json(
         { message: "Email is required" },

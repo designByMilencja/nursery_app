@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
 import bcrypt from 'bcrypt'
-import sendEmail from "@/lib/emailService";
 import { User } from "@/models/User";
 
 export async function POST(req: NextRequest) {
