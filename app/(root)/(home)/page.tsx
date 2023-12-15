@@ -1,6 +1,6 @@
 const Home = () => {
     return (
-        <p>home</p>
+        <p>Aktualności - widoczne dla wszystkich bez koniecznosci logowania</p>
     );
   };
   

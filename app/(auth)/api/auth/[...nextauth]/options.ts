@@ -3,22 +3,6 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcrypt";
 import { User } from "@/models/User";
 
-// export interface JWT {
-//   role: string;
-// }
-
-// export interface UserProfile {
-//   id: string;
-//   email: string;
-//   employee: boolean;
-//   sub: string;
-//   role: string;
-// }
-
-// export interface Session {
-//   user: UserProfile;
-// }
-
 export const options: NextAuthOptions = {
   secret: process.env.NEXTAUTH_SECRET,
   providers: [
@@ -28,19 +12,35 @@ export const options: NextAuthOptions = {
         email: { label: "Email:", type: "text" },
         password: { label: "Hasło:", type: "password" }
       },
-      async authorize(credentials) {
+      async authorize(credentials: Record<"email" | "password", string> | undefined) {
+        if(!credentials) return null
+
         const {password, email} = credentials
         try {
           const foundUser = await User.findOne({
             email
-          }).lean().exec();
+          }).lean().exec() as {
+            _id: string;
+            name: string;
+            email:string;
+            role: string;
+            password: string;
+            isVerified: boolean;
+          };
+          console.log('tak wyglada found user',foundUser);
           if (!foundUser) {
             return null;
           }
+          if (!foundUser.isVerified) {
+            console.log('user no verified');
+            return null
+          }
+          
+
           if (foundUser) {
             const match = await bcrypt.compare(password, foundUser?.password);
             if (match) {
-              delete foundUser?.password;
+              foundUser.password = "";
               return {
                 id: foundUser?._id,
                 name: foundUser?.name,
@@ -61,16 +61,26 @@ export const options: NextAuthOptions = {
   pages: {
     signIn: "/sign-in"
   },
-//   callbacks: {
-//     async jwt({ token, user }) {
-//       if (user) (token as JWT).role = (user as UserProfile).role;
-//       return token;
-//     },
-//     async session({ session, token }) {
-//       if (session?.user) (session as Session).user.role = (token as JWT).role;
-//       return session;
-//     }
-//   },
+  callbacks: {
+
+    async jwt({ token, user }) {
+      if (user && 'role' in user) 
+      {token.role = user.role}
+      
+      return token;
+    },
+    async session({ session, token }) {
+      const newSession = {
+        ...session,
+        user: {
+          ...session.user,
+          role: token && 'role' in token ? token.role : "",
+        },
+      };
+
+      return Promise.resolve(newSession);
+    },
+  },
   session: {
     strategy: "jwt",
     maxAge: 10 * 24 * 60 * 60,
