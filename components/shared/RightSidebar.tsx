@@ -1,6 +1,5 @@
 import Link from "next/link"
 import Image from "next/image"
-// import RenderTag from "@/components/shared/RenderTag";
 // import { getHotQuestions } from "@/lib/actions/question.action";
 // import { getTopPopularTags } from "@/lib/actions/tag.action";
 
@@ -35,11 +34,11 @@ const RightSidebar = async () => {
       </div>
       <div className="mt-16">
         <h3 className="h3-bold text-dark200_light900">Popularne tematy</h3>
-        <div className="mt-7 flex flex-col gap-3">
+        <div className="mt-7 flex flex-wrap gap-3">
           {subjects.map((subject) => (
-            <span className="font-bold text-primary-500" key={subject._id}>
-              # {subject.title}
-            </span>
+                <Link key={subject._id} href={`/tags/${subject._id}`} className="subtle-medium background-light800_dark300 text-light400_light500 rounded-md border-none px-4 py-2 uppercase">
+                # {subject.title}
+              </Link>
           ))}
         </div>
       </div>

@@ -8,9 +8,10 @@ const Job = async () => {
     redirect("/sign-in");
   }
   return (
-    <div>Job Server Session
-      <p>{session?.user?.email}</p>
+    <div>Zakładka praca - widoczna dla wszystkich
       <p>{session?.user?.role}</p>
+      <p>Wyswietlamy pracownkikow szukajacych pracy</p>
+      <p>Wyswietlamy pracodawcow oferujacych prace</p>
     </div>
   );
 };

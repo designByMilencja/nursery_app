@@ -4,45 +4,46 @@ import { LoginData } from "@/types";
 import Input from "@/components/forms/Input";
 import Button from "@/components/forms/Button";
 import Link from "next/link";
-import { signIn } from "next-auth/react";
+import { signIn} from "next-auth/react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 const LoginForm = () => {
-    const router = useRouter();
-    const [error, setError] = useState<string>("");
-    const {
-      register, handleSubmit, formState: {
-        errors, isDirty, isValid
+  const router = useRouter();
+  const [error, setError] = useState<string>("");
+  const {
+    register, handleSubmit, formState: {
+      errors, isDirty, isValid
+    }
+  } = useForm<LoginData>({
+    reValidateMode: "onChange",
+    mode: "onBlur",
+    defaultValues: {
+      email: "",
+      password: ""
+    }
+  });
+  const handleSubmitForm = async (data: LoginData) => {
+    try {
+      const response = await signIn("credentials", {
+        email: data.email,
+        password: data.password,
+        redirect: false
+      });
+      console.log(response);
+      if (response?.ok) {
+        router.push("/");
+      } else {
+        setError("Coś poszło nie tak, spróbuj ponownie później");
       }
-    } = useForm<LoginData>({
-      reValidateMode: "onChange",
-      mode: "onBlur",
-      defaultValues: {
-        email: "",
-        password: ""
-      }
-    });
-    const handleSubmitForm = async (data: LoginData) => {
-      try {
-        const response = await signIn("credentials", {
-          email: data.email,
-          password: data.password,
-          redirect: false
-        });
-        console.log(response);
-        if (response?.ok) {
-          router.push("/");
-        } else {
-          setError("Coś poszło nie tak, spróbuj ponownie później");
-        }
-      } catch (error) {
-        setError("Wystąpił nieznany błąd podczas logowania.");
-      }
-    };
-    return (
-      <form onSubmit={handleSubmit(handleSubmitForm)}
-            className="flex flex-col items-center justify-center dark:text-light-900">
+    } catch (error) {
+      setError("Wystąpił nieznany błąd podczas logowania.");
+    }
+  };
+  
+  return (
+    <form onSubmit={handleSubmit(handleSubmitForm)}
+    className="flex flex-col items-center justify-center dark:text-light-900">
         <h1 className="p-5 text-center text-xl tracking-wide">Logowanie</h1>
         <Input label="* Email" type="email"
                {...register("email", {
