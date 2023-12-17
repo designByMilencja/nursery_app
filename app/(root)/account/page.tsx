@@ -12,25 +12,28 @@ const Account = async () => {
     redirect("/sign-in");
     return null;
   }
+  const role = (session?.user as { role?: string })?.role;
   return (
-    <div>Konto {session?.user?.name}
-    <p>admin</p>
-        <div>
+    <div>Konto {role} {session?.user?.name}
+      {role === "admin" && (
+        (<div>
           <p>{session?.user?.email}</p>
           <CreateNews />
           <CreateProcedure />
-        </div>
-        <p> pracodawca</p>
-        <div>
+        </div>)
+      )}
+      {role === "employer" && (
+        (<div>
           <p>{session?.user?.email}</p>
           <AddCandidatureCompany/>
-        </div>
-        <p>pracownik</p>
-        <div>
+        </div>)
+      )}
+      {role === "employee" && (
+        (<div>
           <p>{session?.user?.email}</p>
           <AddCandidatureEmployee/>
-        </div>
-  
+        </div>)
+      )}
     </div>
   );
 };

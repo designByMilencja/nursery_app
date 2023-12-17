@@ -6,10 +6,11 @@ import { usePathname } from "next/navigation"
 import { useSession } from "next-auth/react"
 import { handleSignOut } from "@/lib/handleSignOut"
 
+
 const LeftSidebar = () => {
   const pathname = usePathname()
   const { data: session } = useSession()
-  const userId = session?.user?._id
+  // @ts-ignore
   const links = !session ? sidebarLinks : session?.user?.role === "employer" ? sidebarLinksEmployer : sidebarLinksEmployeeAdmin
 
   return (
@@ -18,13 +19,13 @@ const LeftSidebar = () => {
         {links.map((item) => {
           const isActive = (pathname.includes(item.route) && item.route.length > 1) || pathname === item.route
 
-          if (item.route === "/account") {
-            if (userId) {
-              item.route = `${item.route}/${userId}`
-            } else {
-              return null
-            }
-          }
+          // if (item.route === "/account") {
+          //   if (userId) {
+          //     item.route = `${item.route}/${userId}`
+          //   } else {
+          //     return null
+          //   }
+          // }
           return (
             <Link key={item.route} href={item.route} className={`${isActive ? "primary-gradient rounded-lg text-light-900" : "text-dark300_light900"} flex items-center justify-start gap-4 bg-transparent p-4`}>
               <Image src={item.imgURL} alt={item.label} width={20} height={20} className={`${isActive ? "" : "invert-colors"}`} />
