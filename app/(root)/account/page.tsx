@@ -13,26 +13,24 @@ const Account = async () => {
     return null;
   }
   return (
-    <div>Konto {session?.user?.role} {session?.user?.name}
-      {session?.user?.role === "admin" && (
-        (<div>
+    <div>Konto {session?.user?.name}
+    <p>admin</p>
+        <div>
           <p>{session?.user?.email}</p>
           <CreateNews />
           <CreateProcedure />
-        </div>)
-      )}
-      {session?.user?.role === "employer" && (
-        (<div>
+        </div>
+        <p> pracodawca</p>
+        <div>
           <p>{session?.user?.email}</p>
           <AddCandidatureCompany/>
-        </div>)
-      )}
-      {session?.user?.role === "employee" && (
-        (<div>
+        </div>
+        <p>pracownik</p>
+        <div>
           <p>{session?.user?.email}</p>
           <AddCandidatureEmployee/>
-        </div>)
-      )}
+        </div>
+  
     </div>
   );
 };

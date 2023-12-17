@@ -9,7 +9,6 @@ const Job = async () => {
   }
   return (
     <div>Zakładka praca - widoczna dla wszystkich
-      <p>{session?.user?.role}</p>
       <p>Wyswietlamy pracownkikow szukajacych pracy</p>
       <p>Wyswietlamy pracodawcow oferujacych prace</p>
     </div>
