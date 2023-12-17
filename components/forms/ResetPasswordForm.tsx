@@ -1,6 +1,5 @@
 "use client";
 import { useForm } from "react-hook-form";
-import { Reset } from "@/types";
 import Input from "@/components/forms/Input";
 import Button from "@/components/forms/Button";
 import React, { useEffect } from "react";
@@ -8,7 +7,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 
 interface IResetPassword {
   password: string;
-  token: string;
+  token: string | null;
 }
 
 const ResetPasswordForm = () => {
@@ -35,14 +34,15 @@ const ResetPasswordForm = () => {
       token: ""
     }
   });
-  const handleSubmitForm = async (data: Reset) => {
+  const handleSubmitForm = async (data: IResetPassword) => {
     try {
       data.token = token;
       const res = await fetch("/api/users/reset-password", {
         method: "POST",
         body: JSON.stringify(data),
-        "content-type": "application/json"
-      });
+        headers: {
+          'Content-Type': 'application/json'
+        }      });
        
       const response = await res.json();
   
