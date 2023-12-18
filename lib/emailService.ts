@@ -52,13 +52,13 @@ const sendEmail = async ({ emailAddress, emailType, userId }: Props) => {
       <h3>Witaj</h3>
       <p>Aby potwierdzić rejestrację, kliknij ten link: <a href="${tokenLink}">rejestracja konta</a>.</p>
       <p>Jeśli to nie Ty chcesz się zarejestrować na naszej stronie, zignoruj tę wiadomość..</p>
-      <p>Pozdrawiamy, zespół Nursery</p>
+      <p>Pozdrawiamy, zespół Medi Point</p>
     `
     : `
       <h3>Witaj</h3>
       <p>Aby zresetować hasło, kliknij ten link: <a href="${tokenLink}">zmiana hasła</a>.</p>
       <p>Jeśli to nie Ty chcesz zmienić hasło na naszej stronie, zignoruj tę wiadomość.</p>
-      <p>Pozdrawiamy, zespół Nursery</p>
+      <p>Pozdrawiamy, zespół Medi Point</p>
 
     `};
       
