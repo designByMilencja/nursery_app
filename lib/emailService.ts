@@ -65,8 +65,8 @@ const sendEmail = async ({ emailAddress, emailType, userId }: Props) => {
     const emailSendInfo = await transporter.sendMail(mailOptions);
     return emailSendInfo;
   } catch (error) {
-    throw new Error(error?.message);
-  }
+    const errorMessage = error instanceof Error ? error.message : 'Wystąpił błąd';
+    throw new Error(errorMessage);  }
 };
 
 export default sendEmail;
