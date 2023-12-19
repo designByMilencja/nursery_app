@@ -23,7 +23,9 @@ const ResetEmailForm = () => {
       const res = await fetch("/api/users/reset", {
         method: "POST",
         body: JSON.stringify(data),
-        "content-type": "application/json"
+        headers: {
+          'Content-Type': 'application/json'
+        }
       });
       const response = await res.json();
       if (response.success) {

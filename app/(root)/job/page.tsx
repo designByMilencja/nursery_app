@@ -7,9 +7,11 @@ const Job = async () => {
   if (!session) {
     redirect("/sign-in");
   }
+  const role = (session?.user as { role?: string })?.role;
+
   return (
     <div>Zakładka praca - widoczna dla wszystkich
-      <p>{session?.user?.role}</p>
+      <p>{role}</p>
       <p>Wyswietlamy pracownkikow szukajacych pracy</p>
       <p>Wyswietlamy pracodawcow oferujacych prace</p>
     </div>
