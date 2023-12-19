@@ -11,6 +11,7 @@ const Job = async () => {
 
   return (
     <div>Zakładka praca - widoczna dla wszystkich
+      {role === 'admin' ? "Weryfikuj" : ""}
       <p>Wyswietlamy pracownkikow szukajacych pracy</p>
       <p>Wyswietlamy pracodawcow oferujacych prace</p>
     </div>
