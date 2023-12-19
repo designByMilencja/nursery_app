@@ -27,6 +27,7 @@ const ResetEmailForm = () => {
           'Content-Type': 'application/json'
         }
       });
+
       const response = await res.json();
       if (response.success) {
         router.push("/confirm-email");

@@ -13,7 +13,6 @@ const Account = async () => {
     return null;
   }
   const role = (session?.user as { role?: string })?.role;
-
   return (
     <div>Konto {role} {session?.user?.name}
       {role === "admin" && (

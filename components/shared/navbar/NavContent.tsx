@@ -11,6 +11,7 @@ const NavContent = () => {
   const pathname = usePathname()
   const { data: session } = useSession()
   const role = (session?.user as { role?: string })?.role;
+
   const links = !session ? sidebarLinks : role === "employer" ? sidebarLinksEmployer : sidebarLinksEmployeeAdmin
 
   return (
