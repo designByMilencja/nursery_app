@@ -42,7 +42,9 @@ const ResetPasswordForm = () => {
         body: JSON.stringify(data),
         headers: {
           'Content-Type': 'application/json'
-        }      });
+        }
+      });
+
        
       const response = await res.json();
   

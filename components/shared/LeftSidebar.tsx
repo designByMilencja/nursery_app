@@ -10,8 +10,10 @@ import { handleSignOut } from "@/lib/handleSignOut"
 const LeftSidebar = () => {
   const pathname = usePathname()
   const { data: session } = useSession()
-  // @ts-ignore
-  const links = !session ? sidebarLinks : session?.user?.role === "employer" ? sidebarLinksEmployer : sidebarLinksEmployeeAdmin
+  // const userId = session?.user?._id
+  const role = (session?.user as { role?: string })?.role;
+  const links = !session ? sidebarLinks : role === "employer" ? sidebarLinksEmployer : sidebarLinksEmployeeAdmin
+
 
   return (
     <section className="background-light900_dark200 light-border custom-scrollbar sticky left-0 top-0 h-screen flex-col justify-between overflow-y-auto border-r p-6 pt-36 shadow-light-300 dark:shadow-none max-sm:hidden lg:w-[266px]">

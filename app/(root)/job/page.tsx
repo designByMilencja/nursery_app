@@ -7,6 +7,8 @@ const Job = async () => {
   if (!session) {
     redirect("/sign-in");
   }
+  const role = (session?.user as { role?: string })?.role;
+
   return (
     <div>Zakładka praca - widoczna dla wszystkich
       <p>Wyswietlamy pracownkikow szukajacych pracy</p>
