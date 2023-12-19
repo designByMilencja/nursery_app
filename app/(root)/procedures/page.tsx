@@ -10,9 +10,11 @@ const Procedures = () => {
       redirect("/sign-in");
     }
   });
+  const role = (session?.user as { role?: string })?.role;
+
   return (
     <div>Zakładka procedury, widzi to tylko admin i pracownik
-      {session?.user?.role === "admin" && (
+      {role === "admin" && (
         (<div>
           <p>{session?.user?.email}</p>
           <p>Dodaj procedurę - jesli jest adminem</p>

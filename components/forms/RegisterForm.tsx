@@ -47,7 +47,9 @@ const RegisterForm = () => {
           ...data,
           email: data.email.toLowerCase()
         }),
-        "content-type": "application/json"
+        headers: {
+          'Content-Type': 'application/json'
+        }
       });
       if (!res.ok) {
         if (res.status === 409) {
