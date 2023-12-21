@@ -1,3 +1,4 @@
+import Filters from "@/components/home/Filters";
 import Filter from "@/components/shared/Filter";
 import LocalSearch from "@/components/shared/search/LocalSearch";
 import { HomePageFilters } from "@/constants/filters";
@@ -35,6 +36,7 @@ const Home = () => {
           containerClasses="hidden max-md:flex"
         />
       </div>
+        <Filters/>
 
       <h2>Rewolucja w leczeniu chorób genetycznych.</h2>
       <Image src="/assets/images/blood.jpg" alt="blood picture" width={300} height={600} />
