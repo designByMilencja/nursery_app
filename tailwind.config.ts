@@ -15,6 +15,9 @@ module.exports = {
         "2xl": "1400px",
       },
     },
+    backgroundImage: ({
+      'hero-pattern': "url('/assets/images/blood.jpg')",
+    }),
     extend: {
       colors: {
         primary: {
