@@ -53,6 +53,7 @@ const sendEmail = async ({ emailAddress, emailType, userId }: Props) => {
       <p>Aby potwierdzić rejestrację, kliknij ten link: <a href="${tokenLink}">rejestracja konta</a>.</p>
       <p>Jeśli to nie Ty chcesz się zarejestrować na naszej stronie, zignoruj tę wiadomość..</p>
       <p>Pozdrawiamy, zespół Medykuj</p>
+
     `
     : `
       <h3>Witaj</h3>
@@ -68,7 +69,7 @@ const sendEmail = async ({ emailAddress, emailType, userId }: Props) => {
     const errorMessage = error instanceof Error ? error.message : 'Wystąpił błąd';
     throw new Error(errorMessage);
   }
-  
+
 };
 
 export default sendEmail;

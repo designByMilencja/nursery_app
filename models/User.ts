@@ -1,6 +1,7 @@
 import mongoose, { Schema, Document } from "mongoose";
 
-interface IUser extends Document {
+export interface IUser extends Document {
+  id: string;
   name: string;
   surname: string;
   email: string;
@@ -20,6 +21,7 @@ mongoose.Promise = global.Promise;
 
 export const UserSchema = new Schema<IUser>(
   {
+    id: String,
     name: { type: String, max: 100 },
     surname: { type: String, max: 100 },
     email: { type: String, unique: true, max: 100 },
