@@ -156,7 +156,7 @@ const RegisterForm = () => {
       {errorMessage &&  <p className="warning-message">{errorMessage}</p>}
       <Button disabled={!isDirty || !isValid} type="submit" text="Zarejestruj" />
       <div className="flex w-[300px] justify-between text-xs">
-        <Link href="/sign-in" className="px-2 hover:text-primary-500">Logowanie</Link>
+        <Link href="/sign-in" className="px-2 hover:text-primary-500">Zaloguj się</Link>
         <Link href="/reset" className="px-2 hover:text-primary-500">Odzyskaj hasło</Link>
       </div>
     </form>

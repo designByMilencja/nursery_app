@@ -3,8 +3,7 @@ import { options } from "@/app/(auth)/api/auth/[...nextauth]/options";
 import { redirect } from "next/navigation";
 import CreateNews from "@/components/admin/CreateNews";
 import CreateProcedure from "@/components/admin/CreateProcedure";
-import AddCandidatureCompany from "@/components/user/AddCandidatureCompany";
-import AddCandidatureEmployee from "@/components/user/AddCandidatureEmployee";
+import CompanyForm from "@/components/forms/CompanyForm";
 
 const Account = async () => {
   const session = await getServerSession(options);
@@ -17,7 +16,6 @@ const Account = async () => {
     <div>Konto {role} {session?.user?.name}
       {role === "admin" && (
         (<div>
-          <p>{session?.user?.email}</p>
           <CreateNews />
           <CreateProcedure />
         </div>)
@@ -25,13 +23,15 @@ const Account = async () => {
       {role === "employer" && (
         (<div>
           <p>{session?.user?.email}</p>
-          <AddCandidatureCompany/>
+          <h1 className="h1-bold text-dark100_light900">Dodaj swój profil do listy ogłoszeń z pracownikami uzupełniając wymagane dane:</h1>
+      <div className="mt-9">
+        <CompanyForm/>
+      </div>
         </div>)
       )}
       {role === "employee" && (
         (<div>
           <p>{session?.user?.email}</p>
-          <AddCandidatureEmployee/>
         </div>)
       )}
     </div>

@@ -28,8 +28,8 @@ const Article = ({ _id, title, tags, src, createdAt, desc }: Props) => {
             <Tag _id={tag._id} name={tag.name} key={tag._id} />
           ))}
         </div>
-        <Link href={`/article/${_id}`} className="mb-8 flex justify-center">
-          <button className="paragraph-medium min-h-[46px] rounded-lg bg-primary-500 px-4 py-3 text-light-900 hover:bg-primary-500 dark:bg-primary-500 dark:text-light-900">Zobacz artykuł</button>
+        <Link href={`/article/${_id}`} className="mb-8 flex">
+          <button className="paragraph-medium min-h-[46px] w-full rounded-lg bg-primary-500 px-4 py-3 text-light-900 hover:bg-primary-500 dark:bg-primary-500 dark:text-light-900">Zobacz artykuł</button>
         </Link>
       </div>
     </div>

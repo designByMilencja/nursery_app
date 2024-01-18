@@ -1,6 +1,8 @@
 import { getServerSession } from "next-auth";
 import { options } from "@/app/(auth)/api/auth/[...nextauth]/options";
 import { redirect } from "next/navigation";
+import CandidateForm from "@/components/forms/CandidateForm";
+import Link from "next/link";
 
 const Job = async () => {
   const session = await getServerSession(options);
@@ -10,9 +12,15 @@ const Job = async () => {
   const role = (session?.user as { role?: string })?.role;
 
   return (
-    <div>Zakładka praca - widoczna dla wszystkich
-      <p>Wyswietlamy pracownkikow szukajacych pracy</p>
-      <p>Wyswietlamy pracodawcow oferujacych prace</p>
+    <div>
+      <h1>Ogłoszenia dla pracowników i pracodawców</h1>
+     mapa z uzytkownikow ktorzy dodali swoja kandydature do bazy, 
+     pojedynczy record - zmapowany na uzytkownikow, 
+     tabsy-podział oferuję pracę, szukam pracy
+     sprawdzenie czy zalogowany uzytkownik dodał sie do bazy, jesli nie wyswietlamy przycisk
+     <Link href="/account" className="flex justify-end max-sm:w-full">
+          <button className="primary-gradient m-2 min-h-[46px] rounded-lg px-4 py-3 text-light-900">Dodaj swój profil do ogłoszeń</button>
+        </Link>
     </div>
   );
 };
