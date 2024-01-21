@@ -1,4 +1,4 @@
-import ConfirmationChangingPassword from "@/components/forms/ConfimationChangingPassword";
+import ConfirmationChangingPassword from "@/components/forms/auth/ConfimationChangingPassword";
 
 const Page = () => {
   return (

@@ -3,7 +3,8 @@ import { options } from "@/app/(auth)/api/auth/[...nextauth]/options";
 import { redirect } from "next/navigation";
 import CreateNews from "@/components/admin/CreateNews";
 import CreateProcedure from "@/components/admin/CreateProcedure";
-import CompanyForm from "@/components/forms/CompanyForm";
+import CompanyForm from "@/components/forms/job/CompanyForm";
+import CandidateForm from "@/components/forms/job/CandidateForm";
 
 const Account = async () => {
   const session = await getServerSession(options);
@@ -32,6 +33,7 @@ const Account = async () => {
       {role === "employee" && (
         (<div>
           <p>{session?.user?.email}</p>
+          <CandidateForm/>
         </div>)
       )}
     </div>

@@ -1,4 +1,4 @@
-import ResetEmailForm from "@/components/forms/ResetEmailForm";
+import ResetEmailForm from "@/components/forms/auth/ResetEmailForm";
 
 const ResetConfirm = () => {
   return (

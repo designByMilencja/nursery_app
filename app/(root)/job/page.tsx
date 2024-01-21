@@ -1,7 +1,6 @@
 import { getServerSession } from "next-auth";
 import { options } from "@/app/(auth)/api/auth/[...nextauth]/options";
 import { redirect } from "next/navigation";
-import CandidateForm from "@/components/forms/CandidateForm";
 import Link from "next/link";
 
 const Job = async () => {
