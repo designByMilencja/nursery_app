@@ -29,7 +29,7 @@ const CandidateForm = () => {
       }
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="flex w-full flex-col gap-108">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="flex w-full flex-col gap-10">
         <h2 className='paragraph-semibold text-dark400_light800'>1. Twoje dane</h2>
         <FormField
           control={form.control}
