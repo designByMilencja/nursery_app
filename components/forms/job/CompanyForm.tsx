@@ -153,7 +153,7 @@ const CompanyForm = () => {
             </FormItem>
           )}
         />
-        <Button type="submit">Dodaj swój profil</Button>
+        <Button type="submit" className="primary-gradient m-2 min-h-[46px] rounded-lg px-4 py-3 text-light-900">Dodaj swój profil</Button>
       </form>
     </Form>
   )

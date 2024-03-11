@@ -70,7 +70,7 @@ const CandidateForm = () => {
             </FormItem>
           )}
         />
-        <h2>2. Informacje o doświadczeniu zawodowym</h2>
+        <h2 className='paragraph-semibold text-dark400_light800'>2. Informacje o doświadczeniu zawodowym</h2>
           <FormField
           control={form.control}
           name="ocupation"
@@ -138,7 +138,7 @@ const CandidateForm = () => {
             </FormItem>
           )}
         />
-        <Button type="submit">Dodaj swój profil</Button>
+        <Button type="submit" className="primary-gradient m-2 min-h-[46px] rounded-lg px-4 py-3 text-light-900">Dodaj swój profil</Button>
       </form>
     </Form>
   )
