@@ -16,12 +16,12 @@ const Procedures = () => {
   return (
     <div>Zakładka <b>PROCEDURY</b>, widzi to tylko admin i pracownik
         <div>
-          <p>obecnie mamy tu rolę: <b>{session?.user?.role}</b></p>
-          {admin === 'admin' ? 
+          <p>obecnie mamy tu rolę: <b>{admin}</b></p>
+          {admin === 'admin' ?
           (<Link href="/add-news" className="flex justify-end max-sm:w-full">
           <button className="primary-gradient m-2 min-h-[46px] rounded-lg px-4 py-3 text-light-900">Dodaj procedurę</button>
         </Link>)  : ""
-}  
+}
         </div>
     </div>
   );
