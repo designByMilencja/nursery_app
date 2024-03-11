@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
 import bcrypt from "bcrypt"
-import { User } from "@/models/User"
+import { User } from "@/models/user.model"
 
 export async function POST(req: NextRequest) {
   try {

@@ -1,7 +1,7 @@
 import { NextAuthOptions } from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
 import bcrypt from "bcrypt"
-import { User } from "@/models/User"
+import {IUser, User} from "@/models/user.model"
 
 export const options: NextAuthOptions = {
   secret: process.env.NEXTAUTH_SECRET,
@@ -20,22 +20,22 @@ export const options: NextAuthOptions = {
           const foundUser = (await User.findOne({
             email,
           })
-            .lean()
-            .exec()) as {
+              .lean()
+              .exec()) as {
             _id: string
             name: string
             email: string
             role: string
             password: string
-            isVerified: boolean
           }
           if (!foundUser) {
             return null
           }
 
           if (foundUser) {
-            const match = await bcrypt.compare(password, foundUser?.password)
+            const match = await bcrypt.compare(password ?? "", foundUser.password)
             if (match) {
+              console.log(foundUser._id)
               foundUser.password = ""
               return {
                 id: foundUser?._id,
@@ -51,7 +51,7 @@ export const options: NextAuthOptions = {
           console.log(e)
         }
         return null
-      },
+      }
     }),
   ],
   pages: {
@@ -59,17 +59,18 @@ export const options: NextAuthOptions = {
   },
   callbacks: {
     async signIn({user}) {
-      const isVerifiedUser = await User.findOne({
+      const isVerifiedUser: IUser | null = await User.findOne({
         email: user?.email,
-      })  
-      if(isVerifiedUser?.isVerified)   {
-        return true
-      } else { return false }
+      })
+      return !!isVerifiedUser?.isVerified;
     },
 
     async jwt({ token, user }) {
       if (user && "role" in user) {
         token.role = user.role
+      }
+      if (user && "id" in user) {
+        token.id = user.id
       }
 
       return token
@@ -80,9 +81,9 @@ export const options: NextAuthOptions = {
         user: {
           ...session.user,
           role: token && "role" in token ? token.role : "",
+          id: token && "id" in token ? token.id : ""
         },
       }
-
       return Promise.resolve(newSession)
     },
   },
@@ -92,3 +93,4 @@ export const options: NextAuthOptions = {
     updateAge: 2 * 24 * 60 * 60,
   },
 }
+
