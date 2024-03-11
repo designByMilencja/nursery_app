@@ -11,6 +11,7 @@ const Job = async () => {
   const role = (session?.user as { role?: string })?.role;
 
   return (
+
     <div>
       <h1>Ogłoszenia dla pracowników i pracodawców</h1>
      mapa z uzytkownikow ktorzy dodali swoja kandydature do bazy, 
@@ -20,6 +21,7 @@ const Job = async () => {
      <Link href="/account" className="flex justify-end max-sm:w-full">
           <button className="primary-gradient m-2 min-h-[46px] rounded-lg px-4 py-3 text-light-900">Dodaj swój profil do ogłoszeń</button>
         </Link>
+
     </div>
   );
 };
