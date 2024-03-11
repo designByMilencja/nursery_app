@@ -15,9 +15,23 @@ export const EmployerSchema = z.object({
     nameSurname: z.string().min(2).max(150),
     city: z.string().min(2).max(150),
     addressEmail: z.string().min(2).max(80),
-    ocupation: z.string().min(2).max(150),
+    occupation: z.string().min(2).max(150),
     specialization: z.string().min(2).max(150),
     contractType: z.string().min(2).max(150),
     hours: z.number().min(1).max(3),
     additional: z.string().min(2).max(200)
+  })
+
+  export const ArticleSchema = z.object({
+    title: z.string().min(2).max(150),
+    image: z.string().min(2).max(150),
+    description: z.string().min(2).max(80),
+    tags: z.array(z.string().min(1).max(15)).min(1).max(3),
+  })
+
+  export const ProcedureSchema = z.object({
+    title: z.string().min(2).max(150),
+    image: z.string().min(2).max(150),
+    description: z.string().min(2).max(80),
+    tags: z.array(z.string().min(1).max(15)).min(1).max(3),
   })

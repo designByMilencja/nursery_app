@@ -15,7 +15,7 @@ const CandidateForm = () => {
           nameSurname: "",
           city: "",
           addressEmail: "",
-          ocupation: "",
+          occupation: "",
           specialization: "",
           hours: 1,
           contractType: "",
@@ -73,7 +73,7 @@ const CandidateForm = () => {
         <h2 className='paragraph-semibold text-dark400_light800'>2. Informacje o doświadczeniu zawodowym</h2>
           <FormField
           control={form.control}
-          name="ocupation"
+          name="occupation"
           render={({ field }) => (
             <FormItem className="flex w-full flex-col">
               <FormLabel className="paragraph-semibold text-dark400_light800">Stanowisko <span className="text-primary-500">*</span></FormLabel>
