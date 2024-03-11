@@ -1,4 +1,4 @@
-import ConfirmationRegistration from '@/components/forms/ConfirmationRegistration'
+import ConfirmationRegistration from '@/components/forms/auth/ConfirmationRegistration'
 import React from 'react'
 
 const Page = () => {

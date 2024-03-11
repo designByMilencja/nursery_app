@@ -1,7 +1,7 @@
 "use client"
 import { useForm } from "react-hook-form"
 import { LoginData } from "@/types"
-import Input from "@/components/forms/Input"
+import Input from "@/components/forms/auth/Input"
 import Button from "@/components/forms/Button"
 import Link from "next/link"
 import { signIn } from "next-auth/react"

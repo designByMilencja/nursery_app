@@ -1,5 +1,5 @@
 import bcrypt from "bcrypt";
-import { User } from "@/models/User";
+import { User } from "@/models/user.model";
 import nodemailer, { TransportOptions } from "nodemailer";
 
 interface Props {
@@ -62,7 +62,7 @@ const sendEmail = async ({ emailAddress, emailType, userId }: Props) => {
       <p>Pozdrawiamy, zespół Medykuj</p>
 
     `};
-      
+
     const emailSendInfo = await transporter.sendMail(mailOptions);
     return emailSendInfo;
   } catch (error) {

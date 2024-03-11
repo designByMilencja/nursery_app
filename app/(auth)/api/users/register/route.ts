@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { User } from "@/models/User";
+import { User } from "@/models/user.model";
 import bcrypt from "bcrypt";
 import { UserRegister } from "@/types";
 import sendEmail from "@/lib/emailService";

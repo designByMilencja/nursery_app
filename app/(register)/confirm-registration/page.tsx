@@ -1,4 +1,4 @@
-import ConfirmRegistration from "@/components/forms/ConfirmRegistration";
+import ConfirmRegistration from "@/components/forms/auth/ConfirmRegistration";
 
 const Page = () => {
   return (

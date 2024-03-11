@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { User } from "@/models/User";
+import { User } from "@/models/user.model";
 import sendEmail from "@/lib/emailService";
 
 export async function POST(req: NextRequest) {
