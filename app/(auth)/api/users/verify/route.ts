@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { User } from "@/models/User";
+import { User } from "@/models/user.model";
 
 export async function GET(req: NextRequest) {
   try {
@@ -34,7 +34,7 @@ export async function GET(req: NextRequest) {
           $gt: Date.now()
         }
       });
-      
+
       if (!user) {
         return NextResponse.json(
           { message: "User not found" },
