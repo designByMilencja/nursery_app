@@ -17,7 +17,7 @@ const Article = ({ _id, title, tags, src, createdAt, desc }: Props) => {
   return (
     <div className="card-wrapper mt-8 flex w-full flex-col gap-5 rounded-[10px] p-2 sm:px-11 md:items-center">
       <div className="mt-8 flex flex-col gap-2">
-        <p className="body-regular text-dark500_light700">{createdAt}</p>
+        <p className="body-regular text-dark500_light700">{createdAt.toString()}</p>
         <Link href={`/article/${_id}`}>
           <h3 className="sm:h3-semibold base-semibold text-dark200_light900 max-w-[500px]">{title}</h3>
         </Link>
